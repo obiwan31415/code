@@ -1,3 +1,4 @@
+//handler, MAC separator : or -, 12 digits no separator
 jQuery(function(){
     document.formvalidator.setHandler('mac', 
         function(value) {
@@ -6,6 +7,7 @@ jQuery(function(){
    });
 });
 
+//handler, no @ sign
 jQuery(function(){
     document.formvalidator.setHandler('myemail', 
         function(value) {
@@ -14,6 +16,7 @@ jQuery(function(){
    });
 });
 
+//form macUpdateForm, MAC separator : or -, 12 digits no separator + alert
 function myValidateForm() {
     regex1=/^(?:[0-9A-Fa-f]{2}([:-]?)){1}(?:[0-9A-Fa-f]{2}\1){4}([0-9A-Fa-f]{2})$/;
     var x = document.forms["macUpdateForm"]["search"].value;
