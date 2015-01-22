@@ -25,7 +25,7 @@ $query->update($db->quoteName('#__comp_register'))
 $db->setQuery($query); 
 $result = $db->query();
 if($result) {
-    echo "<h3>Dane zostały zapisane</h3>";
+    echo '<h3 style="color: green;">Dane zostały zapisane</h3>';
     //display updated record
     $query  = $db->getQuery(true); 
     $query->select(array('macaddress', 'datetime', 'fixedip', 'firstname', 'lastname', 'email', 'room', 'comment')) 
@@ -34,7 +34,7 @@ if($result) {
     $db->setQuery($query); 
     $result = $db->loadAssoc();
 } else {
-    echo "<h3>Błąd zapisu danych</h3>";
+    echo "<h3 color: red;>Błąd zapisu danych</h3>";
 }
 ?>
 <table>
@@ -47,8 +47,3 @@ if($result) {
     <tr><td>Numer pokoju: </td><td><input type="text" name="room" value="<?php echo $result[room]?>" readonly /></td></tr>
     <tr><td>Uwagi:</td><td><textarea name="comment" cols="50"rows="3" readonly ><?php echo $result[comment]?></textarea></td></tr>
 </table>
-
-
-<a href="index.php?option=com_content&view=article&id=53&catid=20&Itemid=139">Powrót do strony wyszukiwania</a>
-
-<!-- 'macaddress', 'datetime', 'fixedip', 'firstname', 'lastname', 'email', 'room', 'comment' -->
