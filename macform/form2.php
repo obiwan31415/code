@@ -1,4 +1,6 @@
 <?php 
+JHTML::_('behavior.formvalidation');
+
 $macaddress = $_POST['macaddress']; 
 $datetime   = $_POST['datetime']; 
 $fixedip    = $_POST['fixedip']; 
@@ -47,3 +49,15 @@ if($result) {
     <tr><td>Numer pokoju: </td><td><input type="text" name="room" value="<?php echo $result[room]?>" readonly /></td></tr>
     <tr><td>Uwagi:</td><td><textarea name="comment" cols="50"rows="3" readonly ><?php echo $result[comment]?></textarea></td></tr>
 </table>
+
+<?php 
+    $out = '<h3 style="color: green;"><em>dhcp.conf:</em></h3>';
+    $out.="# ".date("Y/m/d")."; ".$result[firstname]." ".$result[lastname]."; p.".$result[room].";<br />";
+    $out.="host "."komp".date("YmdHis")." { hardware ethernet ".$result[macaddress];
+    if($result[fixedip] != '') {
+        $out.="; fixed-address $result[fixedip]";
+    }
+    $out.="; }";
+    $out.="<br />";
+    echo $out;
+?>
